@@ -1,0 +1,15 @@
+<form #monForm=ngForm (submit)=ajouter() [formGroup]=formu>
+
+    nom:<input type="text" formControlName=nom>
+    prenom:<input type="text" formControlName=prenom>
+
+    <button [disabled]=!monForm.valid>ajouter</button>
+</form>
+
+<ul>
+    <li *ngFor="let elt of tableau">
+        {{elt.nom}} {{elt.prenom}}
+    </li>
+</ul>
+
+<app-son></app-son>

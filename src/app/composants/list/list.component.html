@@ -1,0 +1,14 @@
+<h2>Ajoutez des enfants</h2>
+<form #monForm=ngForm (submit)=ajouter() [formGroup]=itemForm>
+    Nom: <input type=text formControlName=texte>
+    Prénom: <input type=text  formControlName=couleur>
+    <button [disabled]=!monForm.valid>Ajouter</button>
+</form>
+
+<h2>Les enfants</h2>
+<ul>
+    <ng-container *ngFor='let item of items; index as i;'>
+        <app-item [couleur]='item.couleur' [texte]='item.texte'> <!-- chez l'enfant on le récupère avec @input-->
+        </app-item>
+    </ng-container>
+</ul>

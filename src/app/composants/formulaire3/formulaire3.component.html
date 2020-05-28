@@ -1,0 +1,7 @@
+<form #monForm=ngForm (submit)=ajouter() [formGroup]=formulaire>
+
+<input type="text" formControlName=nom>
+<input type="text" formControlName=prenom>
+
+<button [disabled]=!monForm.valid></button>
+</form>

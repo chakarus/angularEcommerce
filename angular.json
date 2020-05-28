@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "reviAngular"
+    }
+  },
+  "defaultProject": "reviAngular",
+  "cli": {
+    "analytics": "083d6a75-93e2-451f-a286-e453fcf510da"
+  }
 }

@@ -1,0 +1,7 @@
+<p>tableau works!</p>
+
+{{tableau[index]}}<br>
+
+
+<a [routerLink]="['/tableau',(index + 1)%tableau.length]">suivant</a><br>
+<a [routerLink]="['/tableau',(tableau.length + index -1)%tableau.length]">precedent</a>
