@@ -17,14 +17,23 @@ import { FirstComponent } from './composants/first/first.component';
 import { SecondComponent } from './composants/second/second.component';
 import { PersonneComponent } from './composants/personne/personne.component';
 import { EditPersonneComponent } from './composants/edit-personne/edit-personne.component';
+import { AuthComponent } from './composants/auth/auth.component';
+import { AuthGuard } from './guards/auth.guard';
+import { MenuComponent } from './composants/menu/menu.component';
+import { InscriptionComponent } from './composants/inscription/inscription.component';
 
 
 const routes: Routes = [
+  
+  { path: 'login', component: AuthComponent },
+{ path: 'inscription', component: InscriptionComponent },
   {
-    path: 'vehicule',
-    loadChildren: () => import('./modules/vehicule/vehicule.module').then(m => m.VehiculeModule)
-  },
-  {path:'observable',component:ObservableComponent},
+    path: '', canActivate: [AuthGuard], children: [
+      {
+        path: 'vehicule',
+        loadChildren: () => import('./modules/vehicule/vehicule.module').then(m => m.VehiculeModule)
+      },
+      {path:'observable',component:ObservableComponent},
   { path: 'stagiaire', component: StagiaireComponent },
   { path: 'stagiaire/:nom/:prenom', component: StagiaireComponent },
   { path: 'formulaire', component: FormulaireComponent },
@@ -39,11 +48,16 @@ const routes: Routes = [
   { path: 'first', component: FirstComponent },
   { path: 'second', component: SecondComponent },
   { path: 'list', component: ListComponent },
+  {path:'menu',component:MenuComponent},
   { path: 'personne', component: PersonneComponent },
   { path: 'editPersonne', component: EditPersonneComponent },
   { path: 'editPersonne/:id', component: EditPersonneComponent },
+  
   { path: 'tableau/:param', component: TableauComponent },
 
+    ]
+  }
+  
 
 
 

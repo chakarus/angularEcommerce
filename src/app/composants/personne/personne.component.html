@@ -38,9 +38,12 @@
         {{ item.prenom }} {{ item.nom }} 
         <button (click)="supprimerPersonne(item.id)">Supprimer</button>
         <a [routerLink]='["/editPersonne",item.id]'>Modifier</a>
+        
         <ul>
+            
             <li *ngFor="let adresse of item.adresses">
                 {{ adresse.rue }} {{ adresse.ville }} {{ adresse.codePostal }}
+                <button (click)='supprimerAdresse(adresse.id)'>supprimer adresse</button>
             </li>
         </ul>
     </li>

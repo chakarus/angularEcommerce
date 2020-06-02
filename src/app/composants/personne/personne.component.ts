@@ -3,6 +3,7 @@ import { Personne } from 'src/app/interfaces/personne';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { PersonneService } from 'src/app/services/personne.service';
 import { ActivatedRoute } from '@angular/router';
+import { AdresseService } from 'src/app/services/adresse.service';
 
 @Component({
   selector: 'app-personne',
@@ -23,7 +24,7 @@ export class PersonneComponent implements OnInit {
       })
     ])
   });
-  constructor(private fb: FormBuilder, private personneService: PersonneService) {
+  constructor(private fb: FormBuilder, private personneService: PersonneService ,private adresseService:AdresseService) {
   }
   get adresses() {
     return this.personneForm.get('adresses') as FormArray;
@@ -57,6 +58,14 @@ export class PersonneComponent implements OnInit {
     this.personneService.getAllPersonnes().subscribe(
       data => {
         this.personnes = data;
+      }
+    );
+  }
+  supprimerAdresse(id:number){
+
+    this.adresseService.deleteAdresse(id).subscribe(
+      () => {
+        this.afficherPersonnes();
       }
     );
   }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,9 @@ import { SecondComponent } from './composants/second/second.component';
 import { ParrainComponent } from './composants/parrain/parrain.component';
 import { PersonneComponent } from './composants/personne/personne.component';
 import { EditPersonneComponent } from './composants/edit-personne/edit-personne.component';
+import { AuthComponent } from './composants/auth/auth.component';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { InscriptionComponent } from './composants/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import { EditPersonneComponent } from './composants/edit-personne/edit-personne.
     SecondComponent,
     ParrainComponent,
     PersonneComponent,
-    EditPersonneComponent
+    EditPersonneComponent,
+    AuthComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,10 @@ import { EditPersonneComponent } from './composants/edit-personne/edit-personne.
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  
+ }

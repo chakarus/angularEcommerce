@@ -76,7 +76,14 @@
     </ng-container>
  
 </ul> -->
-<!-- <app-menu></app-menu>
-<app-first></app-first>
-<app-second></app-second> -->
 <router-outlet></router-outlet>
+<ng-container *ngIf='getToken()==true'>
+<app-menu></app-menu>
+<button (click)=logout()>se deconnecter</button>
+
+</ng-container>
+
+  <a [routerLink]="['/inscription']">s'inscrire</a>
+
+<!-- <app-first></app-first>
+<app-second></app-second> -->

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
 import { Personne } from './interfaces/personne';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import { Personne } from './interfaces/personne';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private router:Router){
+
+  }
+ 
   title = 'reviAngular';
   tableau = [-5,10,0,18];
   personne={
@@ -22,4 +28,18 @@ export class AppComponent {
     { nom: 'travolta', prenom: 'mike', id: 3 },
     { nom: 'dalton', prenom: 'jack', id: 4 },
   ];
+  getToken() {
+    // return localStorage.getItem('token') != null ? true : false;
+    if(localStorage.getItem('token')  !=null ){
+      return true;
+    }else
+     return false;
+
+    }
+  
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  }
+
 }
